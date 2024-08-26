@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/_layout">
+
+<div layout:fragment="content">
+    <h1>Eliminar Categoria</h1>
+    <form th:action="@{/categoria/delete}" th:object="${categoria}" method="post">
+        <div class="alert alert-danger" role="alert">
+            ¿Está seguro de que desea eliminar esta categoria?
+        </div>
+        <input type="hidden" name="Id" th:value="${categoria.id}">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nombreI">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{nombreI}" id="nombreI" readonly>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-outline-danger">Eliminar</button> |
+        <a th:href="@{/categoria}" class="btn btn-outline-secondary">Regresar</a>
+    </form>
+</div>

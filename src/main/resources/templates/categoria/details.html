@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/_layout">
+
+<div layout:fragment="content">
+    <h1>Detalles de la Categoria</h1>
+    <form th:object="${categoria}">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nombreI">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{nombreI}" id="nombreI" readonly>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <a th:href="@{/categoria}" class="btn btn-outline-primary">Regresar</a>
+    </form>
+</div>
