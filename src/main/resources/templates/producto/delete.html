@@ -6,7 +6,7 @@
 
 <div layout:fragment="content">
     <h1>Eliminar Producto</h1>
-    <form th:action="@{/producto/delete}" th:object="${producto}" method="post">
+    <form th:action="@{/producto/delete}" th:object="${producto}" method="post" enctype="multipart/form-data">
         <div class="alert alert-danger" role="alert">
             ¿Está seguro de que desea eliminar este producto?
         </div>
@@ -40,6 +40,7 @@
                 </select>
             </div>
         </div>
+        <th:block th:with="action=${'delete'}" th:insert="~{/producto/_image.html}"></th:block>
         <div class="row" th:with="action=${'delete'}">
             <th:block th:insert="~{/producto/_Etiquetas.html}"></th:block>
         </div>

@@ -6,7 +6,7 @@
 
 <div layout:fragment="content">
     <h1>Detalles del Producto</h1>
-    <form th:object="${producto}">
+    <form th:object="${producto}" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -36,6 +36,7 @@
                 </select>
             </div>
         </div>
+        <th:block th:with="action=${'details'}" th:insert="~{/producto/_image.html}"></th:block>
         <div class="row" th:with="action=${'details'}">
             <th:block th:insert="~{/producto/_Etiquetas.html}"></th:block>
         </div>

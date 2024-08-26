@@ -1,0 +1,29 @@
+<br>
+<div class="row" th:if="${action == 'create' || action == 'edit'}">            
+    <div class="col-md-6">
+        <div class="form-group">
+            <label >Subir imagen</label>
+            <input type="file" name="file" id="file"  accept="image/*"> 
+            <button type="button" class="btn btn-danger" onclick="clearFile()">Clear</button>                             
+        </div>
+    </div>      
+</div>
+<div class="row" th:if="${action != 'create' && producto.urlImagenI!=null && producto.urlImagenI.trim().length() > 0 }">
+    <img style="max-width: 200px;" id="imagePr" th:src="@{'/producto/images/' + ${producto.id}}" alt="Imagen">
+    <input type="hidden" id="urlImagenI" name="urlImagenI" th:value="${producto.urlImagenI}">
+    <!--<div class=" col-md-3">
+        <button  th:if="${ action == 'edit'}" type="button" class="btn btn-danger" onclick="deleteImage()">Eliminar Imagen</button>  
+    </div> -->
+       
+   
+    <!-- Opcional: Mostrar un mensaje si la imagen no se puede cargar -->  
+</div>
+<script>
+    function clearFile() {
+        document.getElementById('file').value = '';
+    }
+    function deleteImage() {
+        document.getElementById('urlImagenI').value ="delete";
+        document.getElementById('imagePr').style.display = "none";
+    }
+</script>

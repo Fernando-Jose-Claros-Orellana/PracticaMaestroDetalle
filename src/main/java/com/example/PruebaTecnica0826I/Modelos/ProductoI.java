@@ -28,6 +28,16 @@ public class ProductoI {
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EtiquetaI> etiquetas;
 
+    private String urlImagenI;
+
+    public String getUrlImagenI() {
+        return urlImagenI;
+    }
+
+    public void setUrlImagenI(String urlImagenI) {
+        this.urlImagenI = urlImagenI;
+    }
+
     public Integer getId() {
         return id;
     }
