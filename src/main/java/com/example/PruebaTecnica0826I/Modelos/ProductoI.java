@@ -1,7 +1,10 @@
 package com.example.PruebaTecnica0826I.Modelos;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+
+import java.util.List;
 
 @Entity
 @Table(name = "productos")
@@ -21,8 +24,20 @@ public class ProductoI {
     @JoinColumn(name = "categoria_id")
     private CategoriaI categoria;
 
+    @Valid
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EtiquetaI> etiquetas;
+
     public Integer getId() {
         return id;
+    }
+
+    public List<EtiquetaI> getEtiquetas(){
+        return etiquetas;
+    }
+
+    public void setEtiquetas(List<EtiquetaI> etiquetas){
+        this.etiquetas = etiquetas;
     }
 
     public void setId(Integer id) {

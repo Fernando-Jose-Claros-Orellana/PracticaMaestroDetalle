@@ -40,6 +40,9 @@
                 </select>
             </div>
         </div>
+        <div class="row" th:with="action=${'delete'}">
+            <th:block th:insert="~{/producto/_Etiquetas.html}"></th:block>
+        </div>
         <hr>
         <button type="submit" class="btn btn-outline-danger">Eliminar</button> |
         <a th:href="@{/producto}" class="btn btn-outline-secondary">Regresar</a>

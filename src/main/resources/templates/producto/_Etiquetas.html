@@ -1,0 +1,35 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Etiqueta</th>
+        <th th:if="${action == 'create' || action == 'edit'}">
+            <button type="submit" class="btn btn-success" th:formaction="@{/producto/addetiquetas}">+</button>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <tr th:each="item , index: ${producto.etiquetas}">
+        <td style="display: none;">
+            <input type="hidden" class="form-control" th:value="${item.id}"
+                   th:name="'etiquetas[' + ${index.index} + '].id'" id="id">
+        </td>
+        <td>
+            <input type="text" class="form-control" th:value="${item.nombreI}" data-block
+                   th:name="'etiquetas[' + ${index.index} + '].nombreI'" id="nombreI" required>
+        </td>
+        <td th:if="${action == 'create' || action == 'edit'}">
+            <button type="submit" class="btn btn-outline-danger"
+                    th:formaction="@{/producto/deletiquetas/{id} (id = ${item.id})}">Eliminar</button>
+        </td>
+    </tr>
+    </tr>
+    </tbody>
+</table>
+<script th:if="${action == 'delete' || action == 'details'}">
+    const blockInputs = document.querySelectorAll("*[data-block]");
+    for (var i = 0; i < blockInputs.length; i++) {
+        const element=blockInputs[i];
+        element.setAttribute("disabled","disabled");
+    }
+</script>
