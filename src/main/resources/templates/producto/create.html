@@ -1,0 +1,42 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/_layout">
+
+<div layout:fragment="content">
+    <h1>Crear nuevo Producto</h1>
+    <form th:action="@{/producto/save}" th:object="${producto}" method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nombreI">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{nombreI}" id="nombreI" placeholder="Escriba el nombre del producto" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="precioi">Precio</label>
+                    <input type="text" class="form-control" th:field="*{precioI}" id="precioI" placeholder="Escriba el precio del producto" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="existenciaI">Existencia</label>
+                    <input type="text" class="form-control" th:field="*{existenciaI}" id="existenciaI" placeholder="Escriba la existencia del producto" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="categoria">Categoria</label>
+                <select class="form-control" th:field="*{categoria.id}" id="categoria" required>
+                    <option value="">Seleccione una categoria</option>
+                    <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombreI}"></option>
+                </select>
+            </div>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-outline-primary">Guardar</button> |
+        <a th:href="@{/producto}" class="btn btn-outline-secondary">Regresar</a>
+    </form>
+</div>

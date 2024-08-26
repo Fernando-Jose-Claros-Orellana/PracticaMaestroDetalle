@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/_layout">
+
+<div layout:fragment="content">
+    <h1>Eliminar Producto</h1>
+    <form th:action="@{/producto/delete}" th:object="${producto}" method="post">
+        <div class="alert alert-danger" role="alert">
+            ¿Está seguro de que desea eliminar este producto?
+        </div>
+        <input type="hidden" name="Id" th:value="${producto.id}">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nombreI">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{nombreI}" id="nombreI" placeholder="Escriba el nombre del producto" readonly>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="precioI">Precio</label>
+                    <input type="text" class="form-control" th:field="*{precioI}" id="precioI" placeholder="Escriba el precio del producto" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="existenciaI">Existencia</label>
+                    <input type="text" class="form-control" th:field="*{existenciaI}" id="existenciaI" placeholder="Escriba la existencia del producto" readonly>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="categoria">Categoria</label>
+                <select class="form-control" th:field="*{categoria.id}" id="categoria" disabled>
+                    <option value="">Seleccione una categoria</option>
+                    <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombreI}"></option>
+                </select>
+            </div>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-outline-danger">Eliminar</button> |
+        <a th:href="@{/producto}" class="btn btn-outline-secondary">Regresar</a>
+    </form>
+</div>
